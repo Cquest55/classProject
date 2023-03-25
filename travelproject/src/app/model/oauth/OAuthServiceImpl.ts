@@ -1,8 +1,8 @@
-import {OAuthJSON} from "./OAuthJSON";
+import {IOAuthService} from "./IOAuthService";
 import fetch from "node-fetch";
 import {response} from "express";
 
-export class OAuthApi implements OAuthJSON {
+export class OAuthServiceImpl implements IOAuthService {
 
     private _access_token: string;
     private _application_name: string;
@@ -138,25 +138,25 @@ export class OAuthApi implements OAuthJSON {
         this._username = username;
     }
 
-    callAuthorizationApi(){
-        return fetch('https://test.api.amadeus.com/v1/security/oauth2/token', {
-            headers : {
-                "Content-Type": 'application/x-www-form-urlencoded',
-                "grant_type": {
-                    "client_id" : this._client_id,
-                    "client_secret": this._apiSecretTest
-                }
-            },
-
-        }).then(response = JSON.stringify(res))) {
-            return response as OAuthJSON; // Cast the response type to our interface
-        });
-    }
-/*
-    curl "https://test.api.amadeus.com/v1/security/oauth2/token" \
--H "Content-Type: application/x-www-form-urlencoded" \
--d "grant_type=client_credentials&client_id={client_id}&client_secret={client_secret}"
-*/
+//     callAuthorizationApi(){
+//         return fetch('https://test.api.amadeus.com/v1/security/oauth2/token', {
+//             headers : {
+//                 "Content-Type": 'application/x-www-form-urlencoded',
+//                 "grant_type": {
+//                     "client_id" : this._client_id,
+//                     "client_secret": this._apiSecretTest
+//                 }
+//             },
+//
+//         }).then(response = JSON.stringify(res))) {
+//             return response as OAuthJSON; // Cast the response type to our interface
+//         });
+//     }
+// /*
+//     curl "https://test.api.amadeus.com/v1/security/oauth2/token" \
+// -H "Content-Type: application/x-www-form-urlencoded" \
+// -d "grant_type=client_credentials&client_id={client_id}&client_secret={client_secret}"
+// */
 
 
 }

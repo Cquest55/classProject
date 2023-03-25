@@ -1,4 +1,4 @@
-export interface OAuthJSON {
+export interface IOAuthService {
 
     type: string;
     username: string;
