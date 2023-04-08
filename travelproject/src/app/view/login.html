@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="../public/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" media="screen"/>
+
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+<body>
+<nav class="navbar navbar-light bg-light static-top">
+    <div class="container">
+        <button type="button" class="btn btn-outline-success"  href="/index.html">
+            Home
+        </button>
+        <button type="button" class="btn btn-outline-success"  href="/signUp.html">
+            Sign Up
+        </button>
+    </div>
+</nav>
+<section class="vh-100" style="background: #6c757d" >
+    <form id="form">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-xl-9">
+
+                <h1 class=" mb-10 text-center">Login</h1>
+
+                <div class="card" style="border-radius: 15px;">
+                    <div class="card-body">
+
+                        <div class="row align-items-center py-3">
+                            <div class="col-md-3 ps-5">
+                                <h6 class="mb-0">Email address</h6>
+                            </div>
+                            <div class="col-md-9 pe-5">
+                                <input id="email" type="email" class="form-control form-control-lg border border-dark border-5" placeholder="flightSeachSystem@example.com border" />
+                            </div>
+                        </div>
+
+
+                        <hr class="mx-n3">
+
+                        <div class="row align-items-center py-3">
+                            <div class="col-md-3 ps-5">
+                                <h6 class="mb-0">Password</h6>
+                            </div>
+                            <div class="col-md-9 pe-5">
+                                <input id="password" type="password" class="form-control form-control-lg border border-dark border-5" placeholder="password" />
+                            </div>
+                        </div>
+
+
+                        <div class="px-5 py-4">
+                            <button type="submit" onclick="doLogin(event)" class="btn btn-outline-success btn-lg" >Login</button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </form>
+</section>
+<footer class="footer bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
+                <ul class="list-inline mb-2">
+                    <li class="list-inline-item"><a href="about.html">About</a></li>
+                    <li class="list-inline-item">⋅</li>
+                    <li class="list-inline-item"><a href="terms.html">Terms of Use</a></li>
+                    <li class="list-inline-item">⋅</li>
+                    <li class="list-inline-item"><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+                <p class="text-muted small mb-4 mb-lg-0">&copy; Flight Search System 2023.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+<script type="text/javascript" src="authService.js"></script>
+<script type="text/javascript" src="frontendLogic.js"></script>
+</html>

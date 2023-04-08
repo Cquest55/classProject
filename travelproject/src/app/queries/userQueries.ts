@@ -8,12 +8,15 @@ export class userQueries {
     first_name varchar(255),
     last_name varchar(255),
     age int,
+    password varchar(50),
+    email varchar(50),
     creation_date DATETIME DEFAULT CURRENT_TIMESTAMP(),
     PRIMARY KEY (id)
     )`;
 
     static ALL_USERS: string = `SELECT * FROM user`;
     static GET_USER: string = `SELECT * FROM user WHERE id = id`;
+    static GET_USER_EMAIL: string = `SELECT * FROM user WHERE email = ?`;
 
     //TODO:prevent sqlinject
     static updateQuery(firstName:string, id:Number){
@@ -21,8 +24,8 @@ export class userQueries {
     }
 
     //TODO:prevent sqlinject
-    static insertQuery(firstName:string, lastName:string,  age:String){
-        return "INSERT INTO user(first_name,last_name, age) VALUES(" + '\''+  firstName +'\''+ "," + '\''+ lastName +'\''+ "," + '\''+ age+'\'' + " )";
+    static insertQuery(firstName:string, lastName:string,  age:String, email:string, password:string){
+        return "INSERT INTO user(first_name,last_name, age, email, password) VALUES(" + '\''+  firstName +'\''+ "," + '\''+ lastName +'\''+ "," + '\''+ age+'\''+ "," +  '\''+ email +'\''+ "," + '\''+ password +'\'' +  " )";
     }
 
     //TODO:prevent sqlinject
