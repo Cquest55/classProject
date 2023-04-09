@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.OAuthServiceImpl = void 0;
 class OAuthServiceImpl {
     constructor(access_token, application_name, client_id, expires_in, scope, state, token_type, type, username) {
         //TODO: make property

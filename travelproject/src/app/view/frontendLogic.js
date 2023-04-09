@@ -1,12 +1,11 @@
-const BASE_API_URL='http://localhost:8181/';
-const AUTH_API = `${BASE_API_URL}/auth`;
-const USER_API = `${BASE_API_URL}/user`;
+const AUTH_API = `http://localhost:8181/auth`;
+const USER_API = `http://localhost:8181//user`;
 
 function login(formData){
     return _post(`${AUTH_API}/login`);
 }
 
-function _post(url, data){
+function __post(url, data){
     return fetch(url, {
         method: 'POST',
         headers: {
@@ -25,10 +24,16 @@ const doLogin = function(e){
         email:email,
         password:password
     }).then(function (res){
-        window.location.href = '/';
+        window.location.href = '/home';
     });
 
 };
+
+const logout = () => {
+    clearStorage('isAuth');
+    clearStorage('access_token');
+    clearStorage('refresh_token');
+}
 
 const doRegister = function(){
     const email = document.getElementById('email').value;
@@ -44,6 +49,6 @@ const doRegister = function(){
         age:age,
         password:password
     }).then(function (res){
-        window.location.href = '/';
+        window.location.href = '/index';
     })
 }

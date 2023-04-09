@@ -1,12 +1,12 @@
 import * as queryUser from '../config/dbConfig';
-import * as query from '../config/dbConfig';
+import {queryGetUsers}  from '../config/dbConfig';
 import * as queryDeleteUser from '../config/dbConfig';
 import {userQueries} from '../queries/userQueries';
 
 import bcrypt from "bcryptjs";   // this is working
 export class userController {
     static getAllUsers(req, res)  {
-        query(userQueries.ALL_USERS, res);
+        queryGetUsers(userQueries.ALL_USERS, res);
     };
 
     static getUser(req, res, byEmail?) :any{

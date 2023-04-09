@@ -4,8 +4,6 @@
 const bcrypt = require('bcryptjs');
 const mysql = require('mysql');
 const {userQueries} = require("../queries/userQueries");
-const {INSERT_USER} = require("../queries/authQueries");
-const {userController} = require("../controller/userController");
 const jwt = require("jsonwebtoken");
 const jwtConfig = require("./jwt-config");
 
@@ -102,8 +100,7 @@ function queryDeleteUser(sql, res) {
     });
 }
 
-//return queryUser(userQueries.GET_USER_EMAIL, res,[req.body.email]);
-function registerUser(req, res, [params]) {
+function registerUser(req, res) {
         console.log(req.body);
         const passHash = bcrypt.hashSync(req.body.password);
         connection.query("INSERT INTO user(first_name,last_name, age, email, password) VALUES(" + '\''+  req.body.first_name +'\''+ "," + '\''+ req.body.last_name +'\''+ "," + '\''+ req.body.age+'\''+ "," +  '\''+ req.body.email +'\''+ "," + '\''+ passHash +'\'' +  " )", params,  function (err, result) {
@@ -124,7 +121,7 @@ function registerUser(req, res, [params]) {
 function loginUser(req, res){
         connection.query(userQueries.GET_USER_EMAIL, [req.body.email], function (err, user){
             if(err){
-                res.status(500).send({msg: 'User not found'});
+                return res.status(500).send({msg: 'User not found'});
             }
 
             console.log(user);
@@ -141,7 +138,18 @@ function loginUser(req, res){
                 .catch(console.log);
         })
 }
+
+function getAllTasks(req,res){
+        connection.query('SELECT * FROM task', function (err, result){
+            if(err){
+               return res.send(err);
+            }
+            return res.json(data);
+        });
+
+}
+
 module.exports = {
-    queryGetUsers,queryGetUser,queryCreateUser,queryUpdateUser,queryDeleteUser,registerUser,loginUser
+    getAllTasks,queryGetUsers,queryGetUser,queryCreateUser,queryUpdateUser,queryDeleteUser,registerUser,loginUser
 }
 
