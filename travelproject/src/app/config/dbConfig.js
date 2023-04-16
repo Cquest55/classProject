@@ -44,18 +44,19 @@ function queryGetUsers(sql, res) {
             if (err) {
                 res.send(err);
             }
+            console.log("made it");
             res.json(result);
         });
     });
 }
 
-function queryGetUser(sql, res, [params]) {
-    console.log(params);
+function queryGetUser(sql, res) {
     return new Promise(resolve => {
-        connection.query(sql, params, function (err, result) {
+        connection.query(sql, function (err, result) {
             if (err) {
                 res.send(err);
             }
+            console.log(sql);
             res.json(result);
         });
     });
@@ -136,7 +137,7 @@ function loginUser(req, res){
 
                 })
                 .catch(console.log);
-        })
+        });
 }
 
 function getAllTasks(req,res){

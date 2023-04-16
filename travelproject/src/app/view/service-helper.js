@@ -15,7 +15,6 @@ const _get = async (url, data) => {
 const _post = async (url, data) => {
     const res = await fetch(url, {
         method: 'POST',
-        mode:"no-cors",
         headers: {
             'Content-Type': 'application/json',
         },

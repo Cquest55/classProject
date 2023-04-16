@@ -1,18 +1,8 @@
 const AUTH_API = `http://localhost:8181/auth`;
 const USER_API = `http://localhost:8181//user`;
-
+export let  TASK_API = '';
 function login(formData){
-    return _post(`${AUTH_API}/login`);
-}
-
-function __post(url, data){
-    return fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/JSON'
-        },
-        body:JSON.stringify(data)
-    });
+    return _post(`${AUTH_API}/login`,formData);
 }
 
 const doLogin = function(e){
@@ -24,6 +14,7 @@ const doLogin = function(e){
         email:email,
         password:password
     }).then(function (res){
+        TASK_API = `http://localhost:8181/users/`+res.id;
         window.location.href = '/home';
     });
 

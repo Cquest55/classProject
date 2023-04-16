@@ -15,12 +15,16 @@ export class userQueries {
     )`;
 
     static ALL_USERS: string = `SELECT * FROM user`;
-    static GET_USER: string = `SELECT * FROM user WHERE id = id`;
+    static GET_USER: string = `SELECT * FROM user WHERE id = ?`;
     static GET_USER_EMAIL: string = `SELECT * FROM user WHERE email = ?`;
 
     //TODO:prevent sqlinject
     static updateQuery(firstName:string, id:Number){
         return "UPDATE user SET first_name=" + '\''+ firstName +'\'' + " WHERE id="+ id;
+    }
+
+    static getUserQuery(id:Number){
+        return "SELECT * FROM user WHERE id="+ id;
     }
 
     //TODO:prevent sqlinject

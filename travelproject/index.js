@@ -9,14 +9,21 @@ const path = require("path");
 const app = express();
 const port=process.env.PORT || 8080;
 
+
+app.use('/node_modules', express.static('node_modules'));
+app.use('/src', express.static('src'));
+
+
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use('/users',userRoutes);
 app.use('/auth',authRoutes);
 app.use('/build-user-list.js',test)
+app.set('view engine', 'html');
+app.engine('html', require('ejs').renderFile);
 
 app.get("/index", (req, res) => {
-    res.sendFile(path.join(__dirname + "/src/app/index.html"));
+    res.render(path.join(__dirname + "/src/app/index.html"));
 })
 app.get("/login", (req, res) => {
     res.sendFile(__dirname + "/src/app/view/login.html");
@@ -48,10 +55,6 @@ app.get("/storage.js", function(req, res){
     res.sendFile(__dirname + "/src/app/view/storage.js");
 });
 
-app.get("/propertiesreader.js", function(req, res){
-    res.sendFile(__dirname + "/src/app/propertiesreader.js");
-});
-
 app.get("/user.service.js", function(req, res){
     res.sendFile(__dirname + "/src/app/view/user.service.js");
 });
@@ -67,18 +70,7 @@ app.get("src/app/view/styles.css", function(req, res){
     res.sendFile(__dirname + "/src/app/view/styles.css");
 });
 
-
-app.use(
-    "/css",
-    express.static(path.join(__dirname, "node_modules/bootstrap/dist/css"))
-)
-app.use(
-    "/js",
-    express.static(path.join(__dirname, "node_modules/bootstrap/dist/js"))
-)
-app.use("/js", express.static(path.join(__dirname, "node_modules/jquery/dist")))
-
-
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css/bootstrap.min.css')); // redirect CSS bootstrap
 
 app.listen(port, () => {
     console.log(`running at port ${port}`);

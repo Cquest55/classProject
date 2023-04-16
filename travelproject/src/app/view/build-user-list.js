@@ -1,9 +1,12 @@
-const  TASK_API = `http://localhost:8181/users`;
+import {TASK_API} from "./frontendLogic";
 
-const getUsers = () => _get(TASK_API);
+
+const getUser = () => _get(TASK_API,{
+
+});
 
 (async () => {
-    const users = await getUsers();
+    const users = await getUser();
     console.log(users);
 
     if(users.length){
