@@ -1,12 +1,9 @@
-import {TASK_API} from "./frontendLogic";
+import { loggedInUserId } from "./frontendLogic";
+import { getUser } from "./frontendLogic";
 
-
-const getUser = () => _get(TASK_API,{
-
-});
 
 (async () => {
-    const users = await getUser();
+    const users = await getUser(loggedInUserId);
     console.log(users);
 
     if(users.length){
