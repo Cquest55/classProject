@@ -22,7 +22,7 @@ const doLogin = function(e){
         password:password
     }).then(function (res){
         loggedInUserId = res.id;
-        window.location.href = '/home';
+        window.location.href = '/index';
     });
 };
 
